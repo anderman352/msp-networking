@@ -1,4 +1,7 @@
 # msp-networking
+
+This repo reflects how I study and prepare for MSP troubleshooting and interviews.
+
 MSP networking concepts + Anki decks (DNS, DHCP, VLAN/Gateway/APIPA)
 
 Resources for IT professionals who want to move into MSP roles and prepare for interviews
