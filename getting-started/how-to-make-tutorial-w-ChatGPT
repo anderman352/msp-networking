@@ -1,0 +1,27 @@
+# Make your own for other topics → Anki workflow with ChatGPT
+# This is how I made this one
+# Learn prompting with your favorite AI
+# ask the AI to teach how to most effectively use it
+
+This repo was built using a repeatable process:
+1) Build a short learning sprint
+2) Convert it into interview-grade Anki cards
+
+## Starter prompt
+You are my MSP interview mentor.
+I want a sprint-based lesson on <TOPIC>.
+Baseline: CompTIA A+, studying for Network+.
+
+Constraints:
+- Windows commands only
+- MSP ticket realism
+- Explain what to run, what it checks, and why
+- Include common pitfalls
+
+Then generate an Anki CSV with:
+Front | Back | Tags
+
+Formatting rules:
+- Randomize correct answer letters
+- Front: question, blank line, choices
+- Back: Correct Answer, commands, interpretation
