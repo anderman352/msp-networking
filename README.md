@@ -14,7 +14,5 @@ This repo is for those who have passed CompTIA A+ and are studying for Network+ 
 
 /getting-started/ how to use this repo
 
-/roadmap/ ideas for the future, deeper learning and other topics
-
 David Anderson
 LinkedIn: https://www.linkedin.com/in/da42/
