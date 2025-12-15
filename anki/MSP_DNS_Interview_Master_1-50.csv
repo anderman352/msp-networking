@@ -1,0 +1,1200 @@
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A VPN user reports the VPN is connected but internal resources do not resolve. What should you check NEXT?
+
+A. Antivirus status
+B. DNS servers assigned to the VPN adapter
+C. User permissions
+D. Browser cache","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers associated with the VPN adapter.
+
+Why it works:
+VPNs must push internal DNS servers for name resolution.
+
+Success:
+Internal DNS listed on VPN adapter.
+
+Failure:
+Local or public DNS still used.
+
+Common pitfall:
+Assuming VPN connectivity guarantees internal access.","dns::vpn dns::troubleshooting dns::basics msp::scenario difficulty::tier2"
+"A user reports they can browse the internet but cannot access internal resources like \\fileserver. What is the FIRST thing you check?
+
+A. Reset the user password
+B. Check the client’s DNS configuration
+C. Reboot the file server
+D. Disable the firewall","Correct Answer: B
+
+Command to run:
+ipconfig /all
+
+What it checks:
+Shows which DNS servers the client is using.
+
+Why it works:
+DNS determines how hostnames resolve to IPs. Internal resources require internal DNS.
+
+Success:
+DNS servers point to internal IPs (usually domain controllers).
+
+Failure:
+Public DNS, router IPs, or no DNS servers listed.
+
+Common pitfall:
+Assuming internet access means DNS is correct.","dns::basics dns::troubleshooting dns::internal msp::scenario difficulty::tier2"
+"A domain-joined workstation cannot log in with domain credentials, but internet access works. Which command should you run FIRST?
+
+A. nslookup
+B. ping
+C. ipconfig /all
+D. ipconfig /flushdns","Correct Answer: C
+
+Command to run:
+ipconfig /all
+
+What it checks:
+DNS servers, gateway, adapter configuration.
+
+Why it works:
+Active Directory authentication depends on internal DNS.
+
+Success:
+DNS servers are internal DC IPs.
+
+Failure:
+DNS points to public or incorrect servers.
+
+Common pitfall:
+Resetting passwords before checking DNS.","dns::ad dns::troubleshooting dns::basics msp::scenario difficulty::tier2"

@@ -1,0 +1,1249 @@
+"User moves to a new desk. Ethernet shows 169.254.x.x, but Wi‑Fi works immediately. What is the MOST likely cause?
+
+A. DHCP server outage
+B. Wrong VLAN or port configuration on the wired switch port
+C. DNS misconfiguration
+D. Faulty NIC","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (Ethernet & Wi‑Fi)
+ipconfig /renew (Ethernet)
+
+What it checks:
+Whether DHCP works on Wi‑Fi but not on Ethernet and whether the wired adapter can reach DHCP.
+
+Why it works:
+If DHCP works on Wi‑Fi, the DHCP server and OS are fine; the wired port/VLAN is suspect.
+
+Success indicates:
+Ethernet receives valid IP after port/VLAN fix.
+
+Failure indicates:
+Ethernet remains APIPA; DHCP unreachable from that port/VLAN.
+
+Common pitfall:
+Assuming DHCP is down because one adapter fails.","vlan::apipa msp::scenario difficulty::tier2"
+"User plugs into a conference room jack and receives 169.254.x.x. Back at their desk, Ethernet works normally. What does this MOST strongly indicate?
+
+A. Intermittent DHCP server failure
+B. Conference room port mapped to a VLAN without DHCP access
+C. Corrupt network driver
+D. DNS issue","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (conference room)
+ipconfig /all (desk)
+
+What it checks:
+IP range and DHCP behavior by physical location.
+
+Why it works:
+Location‑specific APIPA points to port/VLAN configuration, not endpoint failure.
+
+Success indicates:
+Valid IP obtained after port/VLAN correction.
+
+Failure indicates:
+APIPA persists only on conference room ports.
+
+Common pitfall:
+Reinstalling drivers instead of correlating to location.","vlan::apipa msp::scenario difficulty::tier2"
+"User docks their laptop and immediately receives 169.254.x.x on Ethernet. Undocked Wi‑Fi works. What is the BEST next conclusion?
+
+A. Laptop hardware failure
+B. Dock Ethernet path is mapped to wrong VLAN or disabled port
+C. DNS cache corruption
+D. DHCP scope exhaustion","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (docked)
+ipconfig /all (Wi‑Fi)
+
+What it checks:
+Whether DHCP works via Wi‑Fi but not via dock Ethernet.
+
+Why it works:
+Different physical paths map to different switch ports/VLANs.
+
+Success indicates:
+Valid IP after correcting dock port/VLAN.
+
+Failure indicates:
+APIPA only when docked.
+
+Common pitfall:
+Replacing the laptop when the issue is the dock/port.","vlan::apipa msp::scenario difficulty::tier2"
+"User plugs PC into phone passthrough port and gets 169.254.x.x. Phone itself works. What is MOST likely?
+
+A. DHCP server is down
+B. Voice VLAN configured, data VLAN missing or misconfigured
+C. DNS server issue
+D. User error","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all
+Check adapter DHCP enabled
+
+What it checks:
+Whether the data VLAN is properly tagged/passed through the phone.
+
+Why it works:
+Phones often tag voice VLANs; PC relies on correct data VLAN passthrough.
+
+Success indicates:
+PC receives valid IP after phone or port configuration fix.
+
+Failure indicates:
+PC remains APIPA while phone works.
+
+Common pitfall:
+Assuming phone connectivity guarantees PC connectivity.","vlan::apipa msp::scenario difficulty::tier2"
+"Multiple users on one floor receive 169.254.x.x, while other floors work normally. What does this suggest FIRST?
+
+A. Global DHCP outage
+B. Missing DHCP relay or VLAN misconfiguration on that floor
+C. DNS failure
+D. Malware spread","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (affected floor)
+ipconfig /all (working floor)
+
+What it checks:
+DHCP reachability by VLAN or floor.
+
+Why it works:
+Floor‑specific failures indicate VLAN/relay configuration issues.
+
+Success indicates:
+Valid IPs after relay/VLAN fix.
+
+Failure indicates:
+APIPA persists only on affected floor.
+
+Common pitfall:
+Escalating to DHCP server team without checking VLANs.","vlan::apipa msp::scenario difficulty::tier2"
+"User reports APIPA appears only after reboot, but not after sleep. What is a plausible infrastructure explanation?
+
+A. Random Windows bug
+B. Port security or switch timing issue during boot
+C. DNS misconfiguration
+D. Expired certificate","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all after reboot
+ipconfig /renew
+
+What it checks:
+DHCP behavior during full link renegotiation.
+
+Why it works:
+Switch port policies can block DHCP briefly during boot.
+
+Success indicates:
+Valid IP obtained after port config or delay adjustment.
+
+Failure indicates:
+APIPA appears consistently on reboot.
+
+Common pitfall:
+Assuming OS corruption.","vlan::apipa msp::scenario difficulty::tier2"
+"User gets APIPA on wired, but receives a valid IP on guest Wi‑Fi. What is the BEST interpretation?
+
+A. DHCP server partially down
+B. Wired VLAN lacks DHCP access; guest Wi‑Fi has separate DHCP
+C. DNS issue
+D. Wrong password","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (wired)
+ipconfig /all (Wi‑Fi)
+
+What it checks:
+DHCP behavior across network segments.
+
+Why it works:
+Different segments have different DHCP paths.
+
+Success indicates:
+Wired works after VLAN/relay fix.
+
+Failure indicates:
+Wired remains APIPA; Wi‑Fi unaffected.
+
+Common pitfall:
+Assuming DHCP is global.","vlan::apipa msp::scenario difficulty::tier2"
+"User shows 169.254.x.x with DHCP Enabled = Yes. Other users are online. What should you suspect FIRST?
+
+A. DHCP server outage
+B. Client VLAN/port cannot reach DHCP
+C. DNS cache issue
+D. Subnet mask problem","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all
+ipconfig /renew
+
+What it checks:
+Whether DHCP is enabled but unreachable from the client.
+
+Why it works:
+APIPA with DHCP enabled indicates reachability issue, not disabled DHCP.
+
+Success indicates:
+Valid IP after port/VLAN correction.
+
+Failure indicates:
+Renew continues to fail.
+
+Common pitfall:
+Restarting DHCP service unnecessarily.","vlan::apipa msp::scenario difficulty::tier2"
+"APIPA appears immediately after a network maintenance window. What is a likely cause?
+
+A. User error
+B. Switch/VLAN changes removed DHCP relay or access
+C. DNS outage
+D. Browser issue","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all
+Compare with known‑good VLAN
+
+What it checks:
+DHCP reachability after infrastructure changes.
+
+Why it works:
+Maintenance often affects VLAN or relay configs.
+
+Success indicates:
+Valid IP restored after rollback/fix.
+
+Failure indicates:
+APIPA persists post‑maintenance.
+
+Common pitfall:
+Assuming coincidence.","vlan::apipa msp::scenario difficulty::tier2"
+"APIPA affects only one VLAN; others receive valid IPs. What does this MOST strongly indicate?
+
+A. DHCP scope exhaustion
+B. Missing or misconfigured DHCP relay on that VLAN
+C. DNS failure
+D. NIC driver issue","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (affected VLAN)
+ipconfig /all (working VLAN)
+
+What it checks:
+DHCP reachability by VLAN.
+
+Why it works:
+Relays forward DHCP across VLANs; missing relay breaks DHCP for that segment.
+
+Success indicates:
+Valid IP after relay configuration.
+
+Failure indicates:
+APIPA continues on that VLAN.
+
+Common pitfall:
+Blaming DHCP server instead of relay.","vlan::apipa msp::scenario difficulty::tier2"
+"User has a valid IP address but the Default Gateway field is blank. What is the MOST likely cause?
+
+A. DNS server outage
+B. DHCP scope missing gateway option
+C. Corrupt NIC driver
+D. Firewall blocking traffic","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all
+
+What it checks:
+Whether a default gateway was provided by DHCP.
+
+Why it works:
+DHCP option 003 provides the gateway; if missing, routing fails.
+
+Success indicates:
+Gateway appears after DHCP scope correction.
+
+Failure indicates:
+Clients cannot route off subnet.
+
+Common pitfall:
+Chasing DNS before verifying gateway.","vlan::gateway msp::scenario difficulty::tier2"
+"User has a valid IP and gateway configured, but cannot reach any external networks. What is the FIRST test?
+
+A. nslookup google.com
+B. ping default gateway
+C. flush DNS
+D. reboot","Correct Answer: B
+
+Command(s) to run:
+ping <default-gateway>
+
+What it checks:
+Whether the client can reach its first routing hop.
+
+Why it works:
+Gateway reachability validates VLAN placement and L2 connectivity.
+
+Success indicates:
+Gateway replies consistently.
+
+Failure indicates:
+Gateway unreachable due to wrong VLAN or port.
+
+Common pitfall:
+Testing DNS before routing.","vlan::gateway msp::scenario difficulty::tier2"
+"User’s gateway pings successfully, but internet access fails. What does this MOST likely indicate?
+
+A. DNS failure
+B. Upstream routing or firewall issue beyond the gateway
+C. DHCP server outage
+D. NIC failure","Correct Answer: B
+
+Command(s) to run:
+ping 8.8.8.8
+
+What it checks:
+Whether traffic routes beyond the local gateway.
+
+Why it works:
+Confirms whether the issue is upstream of the gateway.
+
+Success indicates:
+8.8.8.8 replies after routing fix.
+
+Failure indicates:
+Upstream routing blocked.
+
+Common pitfall:
+Assuming gateway reachability equals full connectivity.","vlan::gateway msp::scenario difficulty::tier2"
+"User receives a valid IP but the gateway IP does not match the site standard. What should you suspect FIRST?
+
+A. DNS misconfiguration
+B. Wrong DHCP scope or VLAN
+C. Malware infection
+D. OS corruption","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all
+Compare with known-good
+
+What it checks:
+Whether the gateway matches expected network design.
+
+Why it works:
+Incorrect scope or VLAN hands out wrong gateway.
+
+Success indicates:
+Correct gateway after scope/VLAN fix.
+
+Failure indicates:
+Gateway mismatch persists.
+
+Common pitfall:
+Trusting any gateway value without validation.","vlan::gateway msp::scenario difficulty::tier2"
+"User can ping the gateway but cannot reach internal servers. Internet access also fails. What is MOST likely?
+
+A. DNS issue
+B. Routing table or ACL issue at the gateway
+C. DHCP outage
+D. Expired user credentials","Correct Answer: B
+
+Command(s) to run:
+ping <gateway>
+tracert <internal-ip>
+
+What it checks:
+Whether traffic is routed or blocked beyond the gateway.
+
+Why it works:
+Gateway may respond but block or misroute traffic.
+
+Success indicates:
+Traffic routes correctly after fix.
+
+Failure indicates:
+Traffic stops at gateway.
+
+Common pitfall:
+Stopping troubleshooting at a successful gateway ping.","vlan::gateway msp::scenario difficulty::tier2"
+"Gateway responds intermittently depending on desk location. What does this suggest?
+
+A. Random OS bug
+B. Inconsistent VLAN or switch port configuration
+C. DNS instability
+D. Browser issue","Correct Answer: B
+
+Command(s) to run:
+ping <gateway>
+ipconfig /all (multiple locations)
+
+What it checks:
+Gateway reachability tied to physical port.
+
+Why it works:
+Different ports may map to different VLANs.
+
+Success indicates:
+Stable connectivity after port normalization.
+
+Failure indicates:
+Gateway unreachable on some ports.
+
+Common pitfall:
+Assuming user device inconsistency.","vlan::gateway msp::scenario difficulty::tier2"
+"User reports that only local subnet resources are reachable. Gateway is configured. What is MOST likely wrong?
+
+A. DNS resolution
+B. Gateway routing misconfiguration
+C. DHCP lease expired
+D. NIC duplex mismatch","Correct Answer: B
+
+Command(s) to run:
+ping <gateway>
+tracert <external-ip>
+
+What it checks:
+Whether routing beyond subnet is functioning.
+
+Why it works:
+Misconfigured gateway cannot route external traffic.
+
+Success indicates:
+External routing restored after fix.
+
+Failure indicates:
+Traffic stops at gateway.
+
+Common pitfall:
+Assuming subnet reachability equals routing.","vlan::gateway msp::scenario difficulty::tier2"
+"Gateway is reachable on Wi-Fi but not on Ethernet. What is the BEST conclusion?
+
+A. Laptop hardware issue
+B. Wired VLAN or switch port issue
+C. DNS cache corruption
+D. DHCP server down","Correct Answer: B
+
+Command(s) to run:
+ipconfig /all (Wi-Fi)
+ipconfig /all (Ethernet)
+ping <gateway>
+
+What it checks:
+Gateway reachability across adapters.
+
+Why it works:
+Different adapters map to different VLANs.
+
+Success indicates:
+Ethernet gateway reachable after port fix.
+
+Failure indicates:
+Ethernet gateway unreachable.
+
+Common pitfall:
+Reinstalling OS instead of checking port.","vlan::gateway msp::scenario difficulty::tier2"
+"User’s gateway changes after a DHCP renew. What does this MOST likely indicate?
+
+A. Normal behavior
+B. Multiple DHCP servers or overlapping scopes
+C. DNS issue
+D. Windows bug","Correct Answer: B
+
+Command(s) to run:
+ipconfig /release
+ipconfig /renew
+
+What it checks:
+Whether multiple gateways are handed out.
+
+Why it works:
+Multiple DHCP sources cause inconsistent configs.
+
+Success indicates:
+Single consistent gateway after cleanup.
+
+Failure indicates:
+Gateway alternates between renewals.
+
+Common pitfall:
+Ignoring DHCP conflicts.","vlan::gateway msp::scenario difficulty::tier2"
+"Gateway responds, DNS resolves, but applications still fail intermittently. What should you suspect?
+
+A. DNS outage
+B. Gateway ACL or firewall rules
+C. DHCP exhaustion
+D. Browser cache","Correct Answer: B
+
+Command(s) to run:
+ping <gateway>
+tracert <app-server>
+
+What it checks:
+Whether traffic is selectively blocked.
+
+Why it works:
+ACLs can allow ICMP but block application traffic.
+
+Success indicates:
+Applications work after ACL update.
+
+Failure indicates:
+App traffic blocked while pings succeed.
+
+Common pitfall:
+Assuming ICMP success equals app success.","vlan::gateway msp::scenario difficulty::tier2"
+"User has a valid IP address, but the IP range does not match the site standard. Internet works, internal apps fail. What is MOST likely?
+
+A. Expired DHCP lease
+B. DNS server outage
+C. Client is on the wrong VLAN
+D. Laptop hardware failure","Correct Answer: C. Client is on the wrong VLAN
+
+Command(s) to run:
+ipconfig /all
+ping <internal-ip>
+
+What it checks:
+IP range, gateway, and internal reachability
+
+Why it works:
+Wrong VLANs can allow limited access while blocking internal routes
+
+Success indicates:
+IP range corrected after VLAN change
+
+Failure indicates:
+Internal access remains blocked
+
+Common pitfall:
+Assuming internet access means correct VLAN","vlan::misplacement msp::scenario difficulty::tier2"
+"User receives a valid IP from a guest network while plugged into a corporate jack. What does this indicate?
+
+A. Guest VLAN mapped to the port
+B. Correct VLAN assignment
+C. DNS misconfiguration
+D. Corrupt NIC driver","Correct Answer: A. Guest VLAN mapped to the port
+
+Command(s) to run:
+ipconfig /all
+Compare with known-good
+
+What it checks:
+DHCP server and IP range source
+
+Why it works:
+Guest VLANs hand out different IP ranges
+
+Success indicates:
+Correct corporate IP after port fix
+
+Failure indicates:
+Client remains on guest range
+
+Common pitfall:
+Trusting physical jack labels","vlan::misplacement msp::scenario difficulty::tier2"
+"User has a valid IP. DHCP Server listed is a firewall instead of the normal Windows server. What should you suspect?
+
+A. Wrong VLAN or scope
+B. Malware
+C. Normal configuration
+D. DNS failure","Correct Answer: A. Wrong VLAN or scope
+
+Command(s) to run:
+ipconfig /all
+
+What it checks:
+DHCP server identity
+
+Why it works:
+Different VLANs may use different DHCP sources
+
+Success indicates:
+Correct DHCP server after VLAN fix
+
+Failure indicates:
+Unexpected DHCP server persists
+
+Common pitfall:
+Ignoring DHCP server field","vlan::misplacement msp::scenario difficulty::tier2"
+"User has valid IP and DNS servers, but cannot access internal resources. Internet works. What is MOST likely?
+
+A. DNS cache issue
+B. Expired credentials
+C. Isolated or restricted VLAN
+D. Broken NIC","Correct Answer: C. Isolated or restricted VLAN
+
+Command(s) to run:
+ping 8.8.8.8
+ping <internal-ip>
+
+What it checks:
+External vs internal routing
+
+Why it works:
+Isolated VLANs allow internet only
+
+Success indicates:
+Internal access restored after VLAN change
+
+Failure indicates:
+Internal blocked while internet works
+
+Common pitfall:
+Assuming DNS is at fault","vlan::misplacement msp::scenario difficulty::tier2"
+"Two users sit next to each other. One works, one does not. Both have valid IPs. What should you check FIRST?
+
+A. Browser cache
+B. Reimage the failing PC
+C. Compare IP ranges and gateways
+D. Reset passwords","Correct Answer: C. Compare IP ranges and gateways
+
+Command(s) to run:
+ipconfig /all (both systems)
+
+What it checks:
+VLAN placement differences
+
+Why it works:
+Different VLANs can exist on adjacent ports
+
+Success indicates:
+Configs align after port fix
+
+Failure indicates:
+Mismatch persists
+
+Common pitfall:
+Assuming proximity means same VLAN","vlan::misplacement msp::scenario difficulty::tier2"
+"User receives a valid IP, but subnet mask does not match site standard. What does this usually indicate?
+
+A. DNS failure
+B. Bad NIC
+C. Wrong DHCP scope
+D. Expired lease","Correct Answer: C. Wrong DHCP scope
+
+Command(s) to run:
+ipconfig /all
+
+What it checks:
+Subnet mask handed out by DHCP
+
+Why it works:
+Incorrect scope options cause routing issues
+
+Success indicates:
+Correct mask after scope fix
+
+Failure indicates:
+Mask remains incorrect
+
+Common pitfall:
+Ignoring subnet mask","vlan::misplacement msp::scenario difficulty::tier2"
+"User has valid IP, correct gateway, but DNS suffix is unexpected. Internal name resolution fails. Why?
+
+A. Browser issue
+B. Hardware failure
+C. Expired DHCP lease
+D. Wrong VLAN policy","Correct Answer: D. Wrong VLAN policy
+
+Command(s) to run:
+ipconfig /all
+nslookup internal-name
+
+What it checks:
+DNS suffix and resolution behavior
+
+Why it works:
+Different VLANs apply different DNS policies
+
+Success indicates:
+Correct suffix restores resolution
+
+Failure indicates:
+Resolution continues to fail
+
+Common pitfall:
+Assuming DNS servers alone are sufficient","vlan::misplacement msp::scenario difficulty::tier2"
+"After a desk move, user has valid IP but is placed on the voice VLAN. What symptom is MOST likely?
+
+A. APIPA address
+B. Limited or no data access
+C. Full network access
+D. Improved performance","Correct Answer: B. Limited or no data access
+
+Command(s) to run:
+ipconfig /all
+
+What it checks:
+IP range and VLAN behavior
+
+Why it works:
+Voice VLANs restrict data traffic
+
+Success indicates:
+Access restored after correct VLAN assignment
+
+Failure indicates:
+Data access remains limited
+
+Common pitfall:
+Assuming valid IP means correct VLAN","vlan::misplacement msp::scenario difficulty::tier2"
+"User has valid IP, correct DNS servers, but cannot reach internal apps. Gateway is reachable. What is MOST likely?
+
+A. Expired credentials
+B. ACL-restricted VLAN
+C. DNS outage
+D. NIC failure","Correct Answer: B. ACL-restricted VLAN
+
+Command(s) to run:
+ping <gateway>
+tracert <internal-ip>
+
+What it checks:
+Routing vs ACL behavior
+
+Why it works:
+ACLs may allow ICMP but block apps
+
+Success indicates:
+Apps work after ACL fix
+
+Failure indicates:
+Apps remain blocked
+
+Common pitfall:
+Stopping after successful ping","vlan::misplacement msp::scenario difficulty::tier2"
+"User has valid IP but cannot access resources expected for their department. Others can. What should you suspect?
+
+A. Wrong VLAN assignment
+B. DHCP outage
+C. DNS cache corruption
+D. User error","Correct Answer: A. Wrong VLAN assignment
+
+Command(s) to run:
+ipconfig /all
+Compare with department peer
+
+What it checks:
+VLAN assignment by role/location
+
+Why it works:
+Different VLANs grant different access scopes
+
+Success indicates:
+Correct VLAN restores access
+
+Failure indicates:
+Access remains incorrect
+
+Common pitfall:
+Assuming all valid IPs are equal","vlan::misplacement msp::scenario difficulty::tier2"
+"User moved to a temporary desk. Network worked at old desk, now they get the wrong IP range. What is MOST likely?
+
+A. Wrong switch port/VLAN assignment at the new desk
+B. Browser problem
+C. Expired credentials
+D. DNS cache issue","Correct Answer: A. Wrong switch port/VLAN assignment at the new desk
+
+Command(s) to run:
+ipconfig /all
+Compare with known-good at that desk area
+
+What it checks:
+IP range/DHCP server differences by location
+
+Why it works:
+Hot desks/temporary desks often map to different VLANs
+
+Success indicates:
+Correct IP after port/VLAN fix
+
+Failure indicates:
+Wrong range persists at that desk
+
+Common pitfall:
+Reimaging before validating port/VLAN","vlan::physical msp::scenario difficulty::tier2"
+"Conference room jack gives valid IP but only internet works; internal resources fail. What does this MOST likely indicate?
+
+A. DHCP server outage
+B. DNS is down
+C. Corrupt NIC driver
+D. Isolated guest VLAN in conference rooms","Correct Answer: D. Isolated guest VLAN in conference rooms
+
+Command(s) to run:
+ping 8.8.8.8
+ping <internal-ip>
+ipconfig /all
+
+What it checks:
+External vs internal routing from that port
+
+Why it works:
+Conference rooms may be intentionally segmented
+
+Success indicates:
+Internal works after VLAN change
+
+Failure indicates:
+Internal blocked while internet works
+
+Common pitfall:
+Assuming internal apps are down globally","vlan::physical msp::scenario difficulty::tier2"
+"User plugs into IP phone passthrough. Phone works, PC gets wrong IP range. What is MOST likely?
+
+A. Phone port tagged for voice VLAN and PC placed incorrectly
+B. DNS suffix issue only
+C. Windows update pending
+D. Normal behavior","Correct Answer: A. Phone port tagged for voice VLAN and PC placed incorrectly
+
+Command(s) to run:
+ipconfig /all
+
+What it checks:
+IP range/DHCP server identity when using phone passthrough
+
+Why it works:
+Voice VLAN configurations can misplace the PC into the wrong segment
+
+Success indicates:
+Correct IP after phone/port configuration fix
+
+Failure indicates:
+Wrong range persists on phone passthrough
+
+Common pitfall:
+Assuming phone success means PC is on correct VLAN","vlan::physical msp::scenario difficulty::tier2"
+"User docks laptop; Ethernet fails, Wi-Fi works. They swap docks and it works. What is MOST likely?
+
+A. DNS misconfiguration
+B. Laptop OS corruption
+C. DHCP exhaustion
+D. Bad dock or dock port patched to wrong VLAN","Correct Answer: D. Bad dock or dock port patched to wrong VLAN
+
+Command(s) to run:
+ipconfig /all (Ethernet)
+Compare with working dock
+
+What it checks:
+Whether DHCP/VLAN differs between docks
+
+Why it works:
+Different docks may be patched to different ports/VLANs or be faulty
+
+Success indicates:
+Ethernet works at corrected dock/port
+
+Failure indicates:
+Ethernet fails only on one dock
+
+Common pitfall:
+Replacing the laptop instead of the dock/port","vlan::physical msp::scenario difficulty::tier2"
+"Hot-desk environment: user works at desk A but not desk B. Both desks show link lights. What should you do FIRST?
+
+A. Reset the user password
+B. Flush DNS cache
+C. Reinstall Wi-Fi drivers
+D. Compare ipconfig /all between desks","Correct Answer: D. Compare ipconfig /all between desks
+
+Command(s) to run:
+ipconfig /all (desk A)
+ipconfig /all (desk B)
+
+What it checks:
+VLAN/IP/gateway differences tied to physical ports
+
+Why it works:
+Link lights only prove physical connectivity, not VLAN correctness
+
+Success indicates:
+Desk B matches Desk A after port fix
+
+Failure indicates:
+Desk B shows wrong range/gateway
+
+Common pitfall:
+Treating link lights as proof the network is 'fine'","vlan::physical msp::scenario difficulty::tier2"
+"User says wall port label 'DATA' but they get a voice VLAN IP range. What is MOST likely?
+
+A. DHCP server down
+B. Browser cache
+C. DNS outage
+D. Labeling/patching mismatch","Correct Answer: D. Labeling/patching mismatch
+
+Command(s) to run:
+ipconfig /all
+Test alternate wall port if available
+
+What it checks:
+Whether the port maps to voice VLAN despite labeling
+
+Why it works:
+Physical labels can be wrong; patch panel mapping may be incorrect
+
+Success indicates:
+Correct VLAN after using correct port or repatch
+
+Failure indicates:
+Voice VLAN persists on that jack
+
+Common pitfall:
+Assuming physical labels are always accurate","vlan::physical msp::scenario difficulty::tier2"
+"Patch panel issue suspected: user’s port works, but neighbor’s identical port fails with APIPA. What is BEST next step?
+
+A. Disable firewall
+B. Escalate to networking with evidence (ipconfig /all + location)
+C. Flush DNS
+D. Reinstall OS","Correct Answer: B. Escalate to networking with evidence (ipconfig /all + location)
+
+Command(s) to run:
+ipconfig /all (affected)
+ipconfig /all (working)
+Document jack/desk ID
+
+What it checks:
+Location-specific DHCP/VLAN behavior
+
+Why it works:
+Network team needs exact port/jack details to trace patching
+
+Success indicates:
+Network team can confirm and correct mapping
+
+Failure indicates:
+Issue persists tied to a specific jack/port
+
+Common pitfall:
+Escalating without port/jack evidence","vlan::physical msp::scenario difficulty::tier2"
+"User plugs into an untrusted wall port and gets APIPA. Another nearby port works. What does this MOST likely indicate?
+
+A. DNS server outage
+B. That wall port is not patched or is on a VLAN without DHCP
+C. Expired lease
+D. Bad NIC","Correct Answer: B. That wall port is not patched or is on a VLAN without DHCP
+
+Command(s) to run:
+ipconfig /all
+Try alternate port
+ipconfig /renew
+
+What it checks:
+Whether DHCP works on alternative port and whether APIPA is location-specific
+
+Why it works:
+Unpatched/misconfigured ports won’t provide DHCP access
+
+Success indicates:
+Valid IP on the working port
+
+Failure indicates:
+APIPA persists only on the bad port
+
+Common pitfall:
+Assuming it’s a device issue without testing another jack","vlan::physical msp::scenario difficulty::tier2"
+"Interviewer says: 'The user has an IP address, so DHCP is working.' What is the BEST response?
+
+A. Agree if the gateway responds
+B. Change topic to DNS
+C. Agree, DHCP is fully working
+D. Disagree — DHCP issued an IP but VLAN or routing may still be wrong","Correct Answer: D. Disagree — DHCP issued an IP but VLAN or routing may still be wrong
+
+Command(s) to run:
+ipconfig /all
+ping <gateway>
+
+What it checks:
+Whether DHCP success implies correct network placement
+
+Why it works:
+DHCP lease does not guarantee correct VLAN or routing
+
+Success indicates:
+Correct VLAN/gateway verified
+
+Failure indicates:
+Client isolated despite valid IP
+
+Common pitfall:
+Treating DHCP success as end of troubleshooting","vlan::traps msp::interview difficulty::tier3"
+"Interviewer says: 'DNS resolves, so the network is fine.' What is the CORRECT rebuttal?
+
+A. DNS and routing are the same
+B. Only applies on Wi-Fi
+C. DNS resolution does not guarantee routing or access
+D. Agree, name resolution proves connectivity","Correct Answer: C. DNS resolution does not guarantee routing or access
+
+Command(s) to run:
+ping <gateway>
+ping <destination-ip>
+
+What it checks:
+Routing vs name resolution
+
+Why it works:
+DNS can succeed even when routing is broken
+
+Success indicates:
+Traffic reaches destination IP
+
+Failure indicates:
+Traffic blocked despite name resolution
+
+Common pitfall:
+Stopping troubleshooting after nslookup","vlan::traps msp::interview difficulty::tier3"
+"Interviewer claims: 'APIPA always means the DHCP server is down.' What should you say?
+
+A. Only true on wired connections
+B. APIPA means the client cannot reach DHCP from its network segment
+C. Agree
+D. Only true on Wi-Fi","Correct Answer: B. APIPA means the client cannot reach DHCP from its network segment
+
+Command(s) to run:
+ipconfig /all
+ipconfig /renew
+
+What it checks:
+DHCP reachability vs DHCP availability
+
+Why it works:
+APIPA reflects reachability, not server status
+
+Success indicates:
+Valid IP after VLAN/relay fix
+
+Failure indicates:
+APIPA persists on that segment
+
+Common pitfall:
+Restarting DHCP without checking VLANs","vlan::traps msp::interview difficulty::tier3"
+"Interviewer says: 'If the gateway pings, routing is fine.' What is the BEST correction?
+
+A. Only applies to Wi-Fi
+B. Routing issues only affect DNS
+C. Agree
+D. Gateway ping only proves first hop; ACLs or routing rules may still block traffic","Correct Answer: D. Gateway ping only proves first hop; ACLs or routing rules may still block traffic
+
+Command(s) to run:
+ping <gateway>
+tracert <destination>
+
+What it checks:
+First-hop vs end-to-end routing
+
+Why it works:
+Gateways may respond to ICMP but block other traffic
+
+Success indicates:
+Traffic routes correctly end-to-end
+
+Failure indicates:
+Traffic stops beyond gateway
+
+Common pitfall:
+Stopping after a successful gateway ping","vlan::traps msp::interview difficulty::tier3"
+"Interviewer says: 'Works on Wi-Fi, so the laptop is fine.' What is the BEST expanded answer?
+
+A. Disagree, Wi-Fi is unreliable
+B. Agree and stop troubleshooting
+C. Agree, and focus on the wired port or VLAN
+D. Reimage the laptop","Correct Answer: C. Agree, and focus on the wired port or VLAN
+
+Command(s) to run:
+ipconfig /all (Wi-Fi)
+ipconfig /all (Ethernet)
+
+What it checks:
+Adapter-specific VLAN placement
+
+Why it works:
+Different adapters map to different VLANs
+
+Success indicates:
+Ethernet works after port fix
+
+Failure indicates:
+Ethernet remains broken
+
+Common pitfall:
+Ignoring adapter differences","vlan::traps msp::interview difficulty::tier3"
+"Interviewer claims: 'If two users are in the same subnet, they must be on the same VLAN.' What is the correct response?
+
+A. Depends on DNS
+B. Agree
+C. Only true in small networks
+D. Disagree — subnets can span multiple VLANs or be misassigned","Correct Answer: D. Disagree — subnets can span multiple VLANs or be misassigned
+
+Command(s) to run:
+ipconfig /all
+Compare DHCP server and gateway
+
+What it checks:
+Subnet vs VLAN separation
+
+Why it works:
+Same subnet does not guarantee same VLAN
+
+Success indicates:
+Correct VLAN verified
+
+Failure indicates:
+Users isolated despite same subnet
+
+Common pitfall:
+Equating IP math with network design","vlan::traps msp::interview difficulty::tier3"
+"Interviewer says: 'If internet works, VLAN must be correct.' What is the BEST rebuttal?
+
+A. Agree
+B. Only applies on Wi-Fi
+C. Disagree — guest or isolated VLANs often allow internet only
+D. Only applies on wired","Correct Answer: C. Disagree — guest or isolated VLANs often allow internet only
+
+Command(s) to run:
+ping 8.8.8.8
+ping <internal-ip>
+
+What it checks:
+External vs internal access
+
+Why it works:
+Isolated VLANs commonly allow internet but block internal traffic
+
+Success indicates:
+Internal access restored after VLAN change
+
+Failure indicates:
+Internal remains blocked
+
+Common pitfall:
+Assuming internet access equals full access","vlan::traps msp::interview difficulty::tier3"
+"After a desk move, a user gets APIPA on Ethernet, gateway unreachable, but Wi-Fi works. What is the MOST likely root cause?
+
+A. Wired switch port on wrong VLAN or no DHCP access
+B. DHCP server outage
+C. Laptop NIC failure
+D. DNS outage","Correct Answer: A. Wired switch port on wrong VLAN or no DHCP access
+
+Command(s) to run:
+ipconfig /all
+ping <gateway>
+ipconfig /renew
+
+What it checks:
+DHCP reachability and gateway presence on wired vs Wi-Fi
+
+Why it works:
+Wi-Fi success proves DHCP and OS are fine; wired port is misconfigured
+
+Success indicates:
+Ethernet works after port/VLAN correction
+
+Failure indicates:
+APIPA persists only on wired
+
+Common pitfall:
+Blaming DHCP server globally","vlan::escalation msp::scenario difficulty::tier3"
+"User has valid IP, wrong gateway, internal access fails, internet intermittently works. What should you suspect FIRST?
+
+A. DNS instability
+B. Multiple DHCP servers or overlapping scopes
+C. Malware infection
+D. NIC power saving","Correct Answer: B. Multiple DHCP servers or overlapping scopes
+
+Command(s) to run:
+ipconfig /all
+ipconfig /release
+ipconfig /renew
+
+What it checks:
+Gateway consistency across renewals
+
+Why it works:
+Multiple DHCP sources can hand out inconsistent gateways
+
+Success indicates:
+Single correct gateway after cleanup
+
+Failure indicates:
+Gateway changes between renewals
+
+Common pitfall:
+Ignoring DHCP conflicts","vlan::escalation msp::scenario difficulty::tier3"
+"Some users on a floor get APIPA, others get valid IPs but wrong access. What is the MOST likely explanation?
+
+A. Random Windows issues
+B. Expired credentials
+C. VLAN segmentation differences by switch or port group
+D. DNS cache corruption","Correct Answer: C. VLAN segmentation differences by switch or port group
+
+Command(s) to run:
+ipconfig /all (multiple users)
+Compare by location
+
+What it checks:
+DHCP/VLAN behavior across ports
+
+Why it works:
+Different VLANs or relays may serve different port groups
+
+Success indicates:
+All users receive correct access after normalization
+
+Failure indicates:
+Mixed behavior persists
+
+Common pitfall:
+Assuming a single cause fits all users","vlan::escalation msp::scenario difficulty::tier3"
+"User works on VPN but not on-site wired network. What does this MOST strongly suggest?
+
+A. VPN client misconfiguration
+B. On-site VLAN or routing issue
+C. User account restriction
+D. DNS failure","Correct Answer: B. On-site VLAN or routing issue
+
+Command(s) to run:
+ipconfig /all (on-site)
+ipconfig /all (VPN)
+
+What it checks:
+Access differences between network contexts
+
+Why it works:
+VPN bypasses local VLAN issues
+
+Success indicates:
+On-site access restored after VLAN fix
+
+Failure indicates:
+On-site remains broken
+
+Common pitfall:
+Troubleshooting VPN when it works","vlan::escalation msp::scenario difficulty::tier3"
+"Multiple symptoms: valid IP, gateway reachable, DNS resolves, but only some internal apps work. What is the BEST next escalation step?
+
+A. Reimage the workstation
+B. Restart DHCP service
+C. Escalate to network team with tracert and port details
+D. Flush DNS cache","Correct Answer: C. Escalate to network team with tracert and port details
+
+Command(s) to run:
+tracert <app-server>
+ipconfig /all
+Document port/jack
+
+What it checks:
+Path and policy enforcement beyond first hop
+
+Why it works:
+Network team can trace ACL/routing with evidence
+
+Success indicates:
+Apps restored after policy fix
+
+Failure indicates:
+Apps remain blocked until escalation
+
+Common pitfall:
+Escalating without evidence","vlan::escalation msp::scenario difficulty::tier3"
