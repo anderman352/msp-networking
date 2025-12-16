@@ -2,8 +2,8 @@
 
 A. DNS server outage
 B. The client did not receive a DHCP lease
-C. The default gateway is wrong
-D. The NIC driver is corrupt","Correct Answer: B
+C. The NIC driver is corrupt
+D. The default gateway is wrong","Correct Answer: B. The client did not receive a DHCP lease
 
 Command(s) to run:
 ipconfig
@@ -28,10 +28,10 @@ Next best step:
 Run `ipconfig /release` then `ipconfig /renew`, then re-check `ipconfig /all`.","dhcp::apipa dhcp::basics msp::scenario difficulty::tier2"
 "After confirming a 169.254.x.x address, what is the BEST immediate action on the client?
 
-A. ipconfig /flushdns
-B. ipconfig /release then ipconfig /renew
-C. nslookup google.com
-D. Disable and re-enable the firewall","Correct Answer: B
+A. Disable and re-enable the firewall
+B. ipconfig /flushdns
+C. ipconfig /release then ipconfig /renew
+D. nslookup google.com","Correct Answer: C. ipconfig /release then ipconfig /renew
 
 Command(s) to run:
 ipconfig /release
@@ -54,10 +54,10 @@ Common pitfall:
 Only running /renew without checking the final lease details in ipconfig /all.","dhcp::apipa dhcp::lease msp::scenario difficulty::tier2"
 "ipconfig /all shows 'DHCP Enabled: No' and the user has a bad IP configuration. What is the MOST likely issue?
 
-A. DNS misconfiguration
-B. Adapter is set to static / not set to obtain IP automatically
+A. Adapter is set to static / not set to obtain IP automatically
+B. Router is down
 C. DHCP scope is exhausted
-D. Router is down","Correct Answer: B
+D. DNS misconfiguration","Correct Answer: A. Adapter is set to static / not set to obtain IP automatically
 
 Command(s) to run:
 ipconfig /all
@@ -78,10 +78,10 @@ Common pitfall:
 Assuming the DHCP server is down when the client is simply not configured to use DHCP.","dhcp::basics dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Two users on the same floor: one works, one has 169.254.x.x. What is the BEST next move?
 
-A. Reboot DHCP server
-B. Compare ipconfig /all on working vs failing machines
-C. Flush DNS on both machines
-D. Reset both passwords","Correct Answer: B
+A. Flush DNS on both machines
+B. Reboot DHCP server
+C. Reset both passwords
+D. Compare ipconfig /all on working vs failing machines","Correct Answer: D. Compare ipconfig /all on working vs failing machines
 
 Command(s) to run:
 ipconfig /all (working)
@@ -103,10 +103,10 @@ Common pitfall:
 Troubleshooting only the failing machine without comparing to a working one.","dhcp::troubleshooting dhcp::apipa msp::scenario difficulty::tier2"
 "Wi‑Fi shows connected, but the client has 169.254.x.x. What is the most likely explanation?
 
-A. Wi‑Fi auth succeeded but DHCP did not complete
-B. DNS is down
-C. Wrong gateway
-D. Password expired","Correct Answer: A
+A. DNS is down
+B. Password expired
+C. Wi‑Fi auth succeeded but DHCP did not complete
+D. Wrong gateway","Correct Answer: C. Wi‑Fi auth succeeded but DHCP did not complete
 
 Command(s) to run:
 ipconfig /all
@@ -130,8 +130,8 @@ Assuming 'connected' equals 'fully configured'.","dhcp::wireless dhcp::apipa msp
 
 A. ipconfig
 B. ipconfig /all
-C. ping
-D. nslookup","Correct Answer: B
+C. nslookup
+D. ping","Correct Answer: B. ipconfig /all
 
 Command(s) to run:
 ipconfig /all
@@ -152,10 +152,10 @@ Common pitfall:
 Using `ipconfig` short output and missing DHCP Server/lease details.","dhcp::basics dhcp::lease msp::scenario difficulty::tier2"
 "User has a valid IP (not 169.254) but cannot reach the internet. What should you check FIRST?
 
-A. Default gateway reachability
-B. DNS records
-C. Antivirus
-D. Browser cache","Correct Answer: A
+A. DNS records
+B. Browser cache
+C. Default gateway reachability
+D. Antivirus","Correct Answer: C. Default gateway reachability
 
 Command(s) to run:
 ipconfig /all
@@ -177,10 +177,10 @@ Common pitfall:
 Starting with DNS when routing is broken.","dhcp::gateway dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User can ping 8.8.8.8 but cannot reach google.com by name. In DHCP terms, what is MOST likely wrong?
 
-A. Wrong gateway
-B. Wrong DNS servers handed out
-C. Lease expired
-D. VLAN mismatch","Correct Answer: B
+A. Wrong DNS servers handed out
+B. Wrong gateway
+C. VLAN mismatch
+D. Lease expired","Correct Answer: A. Wrong DNS servers handed out
 
 Command(s) to run:
 ipconfig /all
@@ -203,10 +203,10 @@ Common pitfall:
 Blaming the ISP when it’s a DNS option issue.","dhcp::dns dhcp::troubleshooting msp::scenario difficulty::tier2"
 "ipconfig /all shows Default Gateway is blank. What does that MOST likely indicate?
 
-A. DNS cache stale
-B. DHCP scope option for gateway missing/misconfigured
-C. Malware
-D. Subnet mask too small","Correct Answer: B
+A. Malware
+B. DNS cache stale
+C. Subnet mask too small
+D. DHCP scope option for gateway missing/misconfigured","Correct Answer: D. DHCP scope option for gateway missing/misconfigured
 
 Command(s) to run:
 ipconfig /all
@@ -228,10 +228,10 @@ Common pitfall:
 Focusing on DNS when the gateway is missing.","dhcp::gateway dhcp::scope msp::scenario difficulty::tier2"
 "Some users work; new devices get 169.254.x.x. What is a likely cause?
 
-A. DHCP scope exhaustion
-B. DNS poisoning
+A. DNS poisoning
+B. Corrupt profile
 C. Proxy settings
-D. Corrupt profile","Correct Answer: A
+D. DHCP scope exhaustion","Correct Answer: D. DHCP scope exhaustion
 
 Command(s) to run:
 ipconfig /all (new device)
@@ -253,10 +253,10 @@ Common pitfall:
 Assuming it’s cabling without recognizing the 'new devices only' pattern.","dhcp::scope dhcp::apipa msp::scenario difficulty::tier2"
 "User receives an IP in an unexpected range (192.168.1.x instead of 10.20.30.x). What is MOST likely?
 
-A. Windows picked a random IP
-B. Wrong DHCP server (rogue) or wrong VLAN/SSID
-C. Missing DNS suffix
-D. Browser misconfig","Correct Answer: B
+A. Missing DNS suffix
+B. Windows picked a random IP
+C. Browser misconfig
+D. Wrong DHCP server (rogue) or wrong VLAN/SSID","Correct Answer: D. Wrong DHCP server (rogue) or wrong VLAN/SSID
 
 Command(s) to run:
 ipconfig /all
@@ -277,10 +277,10 @@ Common pitfall:
 Not checking the DHCP Server field and guessing based only on the IP range.","dhcp::scope dhcp::vlan dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Connectivity breaks when a user moves desks; sometimes they get APIPA. What should you suspect?
 
-A. Laptop defect
-B. Switch port/VLAN configuration differs between desks
-C. DNS caching
-D. Password policy","Correct Answer: B
+A. Password policy
+B. Laptop defect
+C. Switch port/VLAN configuration differs between desks
+D. DNS caching","Correct Answer: C. Switch port/VLAN configuration differs between desks
 
 Command(s) to run:
 ipconfig /all (after move)
@@ -302,10 +302,10 @@ Common pitfall:
 Replacing hardware before correlating to location.","dhcp::vlan dhcp::apipa dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User has valid IP and can ping gateway, but internal servers by name fail. Which DHCP-delivered setting is most likely wrong?
 
-A. Subnet mask
-B. DNS servers
-C. Default gateway
-D. Lease duration","Correct Answer: B
+A. DNS servers
+B. Default gateway
+C. Lease duration
+D. Subnet mask","Correct Answer: A. DNS servers
 
 Command(s) to run:
 ipconfig /all
@@ -327,10 +327,10 @@ Common pitfall:
 Assuming DNS server outage instead of checking DHCP-delivered DNS values.","dhcp::dns dhcp::internal msp::scenario difficulty::tier2"
 "User can reach internet sites but not internal hostnames. What is a common DHCP cause in hybrid MSP environments?
 
-A. DHCP handed out public DNS only (missing internal DNS)
-B. Wrong subnet mask
-C. NIC failing
-D. Windows update pending","Correct Answer: A
+A. NIC failing
+B. DHCP handed out public DNS only (missing internal DNS)
+C. Windows update pending
+D. Wrong subnet mask","Correct Answer: B. DHCP handed out public DNS only (missing internal DNS)
 
 Command(s) to run:
 ipconfig /all
@@ -355,8 +355,8 @@ Assuming 'internet works' means DNS is correct for internal services.","dhcp::dn
 
 A. Lease expires
 B. Subnet mask
-C. Host name
-D. Physical address","Correct Answer: B
+C. Physical address
+D. Host name","Correct Answer: B. Subnet mask
 
 Command(s) to run:
 ipconfig /all
@@ -378,10 +378,10 @@ Common pitfall:
 Ignoring the subnet mask because the IP and gateway 'look right'.","dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Best sequence to force a client to pick up updated DHCP options after scope changes?
 
-A. ipconfig /flushdns then ipconfig /displaydns
+A. nslookup then set type=SRV
 B. ipconfig /release then ipconfig /renew
 C. ping 8.8.8.8 then ping google.com
-D. nslookup then set type=SRV","Correct Answer: B
+D. ipconfig /flushdns then ipconfig /displaydns","Correct Answer: B. ipconfig /release then ipconfig /renew
 
 Command(s) to run:
 ipconfig /release
@@ -404,10 +404,10 @@ Common pitfall:
 Renewing without validating changes in ipconfig /all.","dhcp::lease dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "On the same network, one machine shows DHCP Server 10.0.0.5 and another shows 192.168.1.1. What does that MOST likely indicate?
 
-A. Normal behavior
-B. Multiple DHCP servers (possibly rogue) handing out leases
+A. User account locked
+B. Normal behavior
 C. DNS is down
-D. User account locked","Correct Answer: B
+D. Multiple DHCP servers (possibly rogue) handing out leases","Correct Answer: D. Multiple DHCP servers (possibly rogue) handing out leases
 
 Command(s) to run:
 ipconfig /all (both machines)
@@ -428,10 +428,10 @@ Common pitfall:
 Focusing on apps/DNS before proving the DHCP source inconsistency.","dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User’s ipconfig /all shows the correct DNS and gateway, but internal apps still fail. What should you check NEXT?
 
-A. Confirm DNS resolution of internal names
+A. Replace switch
 B. Reset password
-C. Disable firewall
-D. Replace switch","Correct Answer: A
+C. Confirm DNS resolution of internal names
+D. Disable firewall","Correct Answer: C. Confirm DNS resolution of internal names
 
 Command(s) to run:
 nslookup internalhost
@@ -453,10 +453,10 @@ Common pitfall:
 Assuming gateway ping equals full access.","dhcp::dns dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Connectivity drops every few minutes and then returns. Which DHCP-related factor could contribute?
 
-A. Very short lease time or renew failures
-B. DNS TTL
-C. Browser cache
-D. Keyboard driver","Correct Answer: A
+A. DNS TTL
+B. Very short lease time or renew failures
+C. Keyboard driver
+D. Browser cache","Correct Answer: B. Very short lease time or renew failures
 
 Command(s) to run:
 ipconfig /all (check Lease Obtained/Expires)
@@ -478,10 +478,10 @@ Common pitfall:
 Assuming all intermittent drops are Wi‑Fi signal issues without checking leases.","dhcp::lease dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User is on the office network but receives a guest-network IP range. What is MOST likely?
 
-A. Malware changed settings
-B. Wrong VLAN/SSID mapping or wrong switch port config
-C. DNS cache issue
-D. Outlook profile issue","Correct Answer: B
+A. DNS cache issue
+B. Malware changed settings
+C. Wrong VLAN/SSID mapping or wrong switch port config
+D. Outlook profile issue","Correct Answer: C. Wrong VLAN/SSID mapping or wrong switch port config
 
 Command(s) to run:
 ipconfig /all
@@ -503,10 +503,10 @@ Common pitfall:
 Troubleshooting applications before confirming network placement.","dhcp::vlan dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Which ipconfig /all field most directly identifies which device issued the DHCP lease?
 
-A. DNS Servers
+A. Node Type
 B. DHCP Server
 C. Subnet Mask
-D. Node Type","Correct Answer: B
+D. DNS Servers","Correct Answer: B. DHCP Server
 
 Command(s) to run:
 ipconfig /all
@@ -527,10 +527,10 @@ Common pitfall:
 Looking only at the IP range and missing the DHCP Server field.","dhcp::basics dhcp::lease msp::scenario difficulty::tier2"
 "User gets APIPA on wired but works on Wi‑Fi. Best next check?
 
-A. Compare ipconfig /all between wired and Wi‑Fi
-B. Flush DNS
-C. Reset password
-D. Reinstall Windows","Correct Answer: A
+A. Reset password
+B. Reinstall Windows
+C. Flush DNS
+D. Compare ipconfig /all between wired and Wi‑Fi","Correct Answer: D. Compare ipconfig /all between wired and Wi‑Fi
 
 Command(s) to run:
 ipconfig /all (wired)
@@ -555,7 +555,7 @@ Replacing hardware before validating port/VLAN differences.","dhcp::apipa dhcp::
 A. DNS
 B. Gateway/VLAN/Layer 2 connectivity
 C. User permissions
-D. Browser cache","Correct Answer: B
+D. Browser cache","Correct Answer: B. Gateway/VLAN/Layer 2 connectivity
 
 Command(s) to run:
 ipconfig /all
@@ -577,10 +577,10 @@ Common pitfall:
 Spending time on DNS when the gateway is unreachable.","dhcp::gateway dhcp::vlan dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Why can DHCP issues look like DNS issues?
 
-A. DHCP resolves names
+A. DNS controls gateways
 B. DHCP distributes DNS server addresses to clients
-C. DNS assigns IPs
-D. DNS controls gateways","Correct Answer: B
+C. DHCP resolves names
+D. DNS assigns IPs","Correct Answer: B. DHCP distributes DNS server addresses to clients
 
 Command(s) to run:
 ipconfig /all
@@ -603,10 +603,10 @@ Common pitfall:
 Assuming DNS server outage instead of checking DHCP-delivered DNS servers.","dhcp::dns dhcp::basics msp::scenario difficulty::tier2"
 "After server-side DHCP option fixes, what is the best client-side step to pick up new options?
 
-A. ipconfig /displaydns
+A. Restart Outlook
 B. ipconfig /release then ipconfig /renew
 C. ping google.com
-D. Restart Outlook","Correct Answer: B
+D. ipconfig /displaydns","Correct Answer: B. ipconfig /release then ipconfig /renew
 
 Command(s) to run:
 ipconfig /release
@@ -630,9 +630,9 @@ Only flushing DNS cache without correcting the configured DNS servers.","dhcp::l
 "You suspect DHCP handed out wrong DNS. Which quick test supports that?
 
 A. ping 8.8.8.8 works but internal hostname lookup fails
-B. ping gateway fails
-C. ipconfig shows APIPA
-D. Keyboard stops working","Correct Answer: A
+B. ipconfig shows APIPA
+C. Keyboard stops working
+D. ping gateway fails","Correct Answer: A. ping 8.8.8.8 works but internal hostname lookup fails
 
 Command(s) to run:
 ipconfig /all
@@ -655,10 +655,10 @@ Common pitfall:
 Assuming DNS is fine because internet sites resolve.","dhcp::dns dhcp::internal dhcp::troubleshooting msp::scenario difficulty::tier2"
 "In MSP environments, DHCP may run on a firewall instead of Windows Server. What is the correct approach when you see the firewall listed as DHCP Server?
 
-A. Assume it’s wrong and change it
-B. Validate against known-good client/design for that customer
-C. Reinstall the NIC
-D. Flush DNS cache","Correct Answer: B
+A. Reinstall the NIC
+B. Assume it’s wrong and change it
+C. Flush DNS cache
+D. Validate against known-good client/design for that customer","Correct Answer: D. Validate against known-good client/design for that customer
 
 Command(s) to run:
 ipconfig /all
@@ -680,10 +680,10 @@ Common pitfall:
 Assuming one 'standard' DHCP design across all clients.","dhcp::basics dhcp::troubleshooting dhcp::scope msp::scenario difficulty::tier2"
 "A user can access internal resources by IP but not hostname. Which DHCP-delivered setting is likely wrong?
 
-A. Default gateway
-B. DNS servers
-C. Lease duration
-D. DHCP Enabled","Correct Answer: B
+A. Lease duration
+B. DHCP Enabled
+C. Default gateway
+D. DNS servers","Correct Answer: D. DNS servers
 
 Command(s) to run:
 ipconfig /all
@@ -706,10 +706,10 @@ Common pitfall:
 Blaming routing when IP connectivity already works.","dhcp::dns dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User has two DNS servers: one internal, one public. Internal names fail intermittently. What’s likely happening?
 
-A. Gateway is down
-B. Client queries public DNS sometimes
+A. Client queries public DNS sometimes
+B. APIPA
 C. Lease expired
-D. APIPA","Correct Answer: B
+D. Gateway is down","Correct Answer: A. Client queries public DNS sometimes
 
 Command(s) to run:
 ipconfig /all
@@ -732,9 +732,9 @@ Treating intermittent DNS as random rather than configuration-driven.","dhcp::dn
 "User renews DHCP and still has wrong DNS. Most likely reason?
 
 A. Renew can’t change options
-B. Scope/options not fixed or wrong DHCP source
+B. Browser cache
 C. NIC failing
-D. Browser cache","Correct Answer: B
+D. Scope/options not fixed or wrong DHCP source","Correct Answer: D. Scope/options not fixed or wrong DHCP source
 
 Command(s) to run:
 ipconfig /renew
@@ -757,9 +757,9 @@ Only flushing DNS cache.","dhcp::scope dhcp::dns dhcp::lease msp::scenario diffi
 "Only one conference room causes APIPA; elsewhere works. Best interpretation?
 
 A. Laptop defect
-B. Port/VLAN lacks DHCP/relay or misconfigured
-C. DNS down
-D. Password wrong","Correct Answer: B
+B. DNS down
+C. Port/VLAN lacks DHCP/relay or misconfigured
+D. Password wrong","Correct Answer: C. Port/VLAN lacks DHCP/relay or misconfigured
 
 Command(s) to run:
 ipconfig /all
@@ -781,10 +781,10 @@ Common pitfall:
 Replacing laptop before confirming location correlation.","dhcp::apipa dhcp::vlan msp::scenario difficulty::tier2"
 "User has valid IP, gateway reachable, but no internet by IP or name for everyone on that network. First suspect?
 
-A. Browser issue
+A. Scope exhaustion
 B. Upstream firewall/ISP/routing issue
-C. Scope exhaustion
-D. DNS cache","Correct Answer: B
+C. Browser issue
+D. DNS cache","Correct Answer: B. Upstream firewall/ISP/routing issue
 
 Command(s) to run:
 ping <gateway>
@@ -807,10 +807,10 @@ Common pitfall:
 Rebuilding leases when the outage is upstream.","dhcp::gateway dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Which symptom best indicates wrong gateway handed out by DHCP?
 
-A. IP ping works but name fails
-B. Gateway ping fails and off-subnet fails
-C. nslookup NXDOMAIN
-D. APIPA","Correct Answer: B
+A. Gateway ping fails and off-subnet fails
+B. IP ping works but name fails
+C. APIPA
+D. nslookup NXDOMAIN","Correct Answer: A. Gateway ping fails and off-subnet fails
 
 Command(s) to run:
 ipconfig /all
@@ -833,10 +833,10 @@ Common pitfall:
 Mislabeling as DNS.","dhcp::gateway dhcp::scope msp::scenario difficulty::tier2"
 "Client gets correct IP range but wrong subnet mask. Likely impact?
 
-A. Only DNS breaks
-B. Intermittent/broken routing decisions
-C. Always APIPA
-D. Browser cache","Correct Answer: B
+A. Intermittent/broken routing decisions
+B. Always APIPA
+C. Only DNS breaks
+D. Browser cache","Correct Answer: A. Intermittent/broken routing decisions
 
 Command(s) to run:
 ipconfig /all
@@ -858,10 +858,10 @@ Common pitfall:
 Skipping mask review.","dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "Internet works but internal servers do not. Suspect public DNS only. Best verification?
 
-A. Ping internal IP
-B. Verify DNS servers + nslookup internalhost
+A. Verify DNS servers + nslookup internalhost
+B. Ping internal IP
 C. Flush DNS only
-D. Reset router","Correct Answer: B
+D. Reset router","Correct Answer: A. Verify DNS servers + nslookup internalhost
 
 Command(s) to run:
 ipconfig /all
@@ -883,10 +883,10 @@ Common pitfall:
 Flushing cache without fixing resolver addresses.","dhcp::dns dhcp::internal msp::scenario difficulty::tier2"
 "Devices intermittently receive wrong IP ranges. Best evidence to escalate?
 
-A. Browser screenshot
-B. ipconfig /all showing unexpected DHCP Server + IP range
-C. List of usernames
-D. Windows build number","Correct Answer: B
+A. List of usernames
+B. Windows build number
+C. ipconfig /all showing unexpected DHCP Server + IP range
+D. Browser screenshot","Correct Answer: C. ipconfig /all showing unexpected DHCP Server + IP range
 
 Command(s) to run:
 ipconfig /all
@@ -907,10 +907,10 @@ Common pitfall:
 Escalating without hard evidence.","dhcp::scope dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User can ping gateway but cannot ping 8.8.8.8. DNS irrelevant yet. What does that suggest?
 
-A. DNS issue
-B. Upstream routing/firewall issue beyond gateway
+A. Upstream routing/firewall issue beyond gateway
+B. DNS issue
 C. Scope exhaustion
-D. APIPA","Correct Answer: B
+D. APIPA","Correct Answer: A. Upstream routing/firewall issue beyond gateway
 
 Command(s) to run:
 ping <gateway>
@@ -933,10 +933,10 @@ Common pitfall:
 Chasing DNS before confirming IP routing.","dhcp::gateway dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User has APIPA but only on one switch. Elsewhere OK. Best next move?
 
-A. Release/renew repeatedly
-B. Compare with known-good port and escalate VLAN/relay issue
-C. Flush DNS
-D. Reinstall Windows","Correct Answer: B
+A. Flush DNS
+B. Reinstall Windows
+C. Release/renew repeatedly
+D. Compare with known-good port and escalate VLAN/relay issue","Correct Answer: D. Compare with known-good port and escalate VLAN/relay issue
 
 Command(s) to run:
 ipconfig /all
@@ -961,7 +961,7 @@ Treating as a client OS issue.","dhcp::apipa dhcp::vlan msp::scenario difficulty
 A. nslookup
 B. ipconfig /all
 C. ipconfig /flushdns
-D. whoami","Correct Answer: B
+D. whoami","Correct Answer: B. ipconfig /all
 
 Command(s) to run:
 ipconfig /all
@@ -983,9 +983,9 @@ Starting with DNS before validating the lease.","dhcp::troubleshooting dhcp::vla
 "User says 'I can reach google.com but not internal share by hostname'. Best DHCP-related suspicion?
 
 A. Wrong gateway
-B. Missing internal DNS / split DNS issue
+B. APIPA
 C. Lease expired
-D. APIPA","Correct Answer: B
+D. Missing internal DNS / split DNS issue","Correct Answer: D. Missing internal DNS / split DNS issue
 
 Command(s) to run:
 ipconfig /all
@@ -1008,10 +1008,10 @@ Common pitfall:
 Assuming the file server is down.","dhcp::dns dhcp::internal msp::scenario difficulty::tier2"
 "User’s IP is valid but DHCP Server field is blank. What’s most likely?
 
-A. DNS server outage
-B. Static IP configuration (DHCP not used)
-C. Scope exhaustion
-D. VLAN mismatch","Correct Answer: B
+A. VLAN mismatch
+B. Scope exhaustion
+C. Static IP configuration (DHCP not used)
+D. DNS server outage","Correct Answer: C. Static IP configuration (DHCP not used)
 
 Command(s) to run:
 ipconfig /all
@@ -1033,9 +1033,9 @@ Assuming DHCP server is down when the client is static.","dhcp::basics dhcp::tro
 "User receives correct IP but DNS Servers list is empty. What does that indicate?
 
 A. Normal; DNS auto-detects
-B. DHCP scope options missing DNS servers
+B. ISP outage
 C. APIPA
-D. ISP outage","Correct Answer: B
+D. DHCP scope options missing DNS servers","Correct Answer: D. DHCP scope options missing DNS servers
 
 Command(s) to run:
 ipconfig /all
@@ -1058,10 +1058,10 @@ Common pitfall:
 Flushing DNS cache instead of providing DNS servers.","dhcp::dns dhcp::scope msp::scenario difficulty::tier2"
 "Some users work; others get valid IP but wrong gateway. Best guess?
 
-A. Random Windows bug
-B. Multiple scopes or misconfigured option on one VLAN/SSID
-C. DNS poisoning
-D. Password lockout","Correct Answer: B
+A. DNS poisoning
+B. Random Windows bug
+C. Multiple scopes or misconfigured option on one VLAN/SSID
+D. Password lockout","Correct Answer: C. Multiple scopes or misconfigured option on one VLAN/SSID
 
 Command(s) to run:
 ipconfig /all (working)
@@ -1084,10 +1084,10 @@ Common pitfall:
 Assuming all 'valid IPs' are equal.","dhcp::gateway dhcp::scope msp::scenario difficulty::tier2"
 "User gets APIPA after docking/undocking. Wi‑Fi works. What is the best check?
 
-A. Browser cache
-B. Compare adapter configs; wired may be disabled or wrong VLAN
-C. Reset password
-D. Reinstall OS","Correct Answer: B
+A. Reinstall OS
+B. Reset password
+C. Compare adapter configs; wired may be disabled or wrong VLAN
+D. Browser cache","Correct Answer: C. Compare adapter configs; wired may be disabled or wrong VLAN
 
 Command(s) to run:
 ipconfig /all (Ethernet)
@@ -1109,10 +1109,10 @@ Common pitfall:
 Blaming Wi‑Fi when the failing path is Ethernet.","dhcp::apipa dhcp::wireless dhcp::vlan msp::scenario difficulty::tier2"
 "A user can reach internal servers on the same subnet but not other subnets. Gateway ping works. Best next check?
 
-A. DNS only
-B. Check if correct gateway and routes exist; then test off-subnet IPs
+A. Check if correct gateway and routes exist; then test off-subnet IPs
+B. Flush DNS
 C. Reinstall OS
-D. Flush DNS","Correct Answer: B
+D. DNS only","Correct Answer: A. Check if correct gateway and routes exist; then test off-subnet IPs
 
 Command(s) to run:
 ipconfig /all
@@ -1135,10 +1135,10 @@ Common pitfall:
 Assuming DHCP is still the issue when lease is correct.","dhcp::gateway dhcp::troubleshooting msp::scenario difficulty::tier2"
 "User receives valid IP but can’t access internal sites over VPN; internet works. DHCP on VPN isn’t used—what’s still relevant?
 
-A. Nothing
-B. DNS settings pushed by VPN can resemble DHCP option issues
-C. Only subnet mask
-D. Only lease time","Correct Answer: B
+A. Only lease time
+B. Only subnet mask
+C. DNS settings pushed by VPN can resemble DHCP option issues
+D. Nothing","Correct Answer: C. DNS settings pushed by VPN can resemble DHCP option issues
 
 Command(s) to run:
 ipconfig /all (after VPN)
@@ -1160,10 +1160,10 @@ Common pitfall:
 Assuming DHCP is irrelevant because VPN is involved.","dhcp::dns dhcp::internal msp::scenario difficulty::tier2"
 "User’s gateway is correct but ARP/neighbor issues suspected; what client-side signal suggests L2/port problem rather than DHCP?
 
-A. APIPA
+A. Lease expires tomorrow
 B. Gateway ping fails despite correct lease
-C. google.com fails to resolve
-D. Lease expires tomorrow","Correct Answer: B
+C. APIPA
+D. google.com fails to resolve","Correct Answer: B. Gateway ping fails despite correct lease
 
 Command(s) to run:
 ping <gateway>
@@ -1188,7 +1188,7 @@ Assuming DHCP success guarantees L2 health.","dhcp::gateway dhcp::vlan msp::scen
 A. Reinstall OS
 B. Compare with known-good; suspect VLAN ACLs or upstream rules
 C. Flush DNS
-D. Renew lease repeatedly","Correct Answer: B
+D. Renew lease repeatedly","Correct Answer: B. Compare with known-good; suspect VLAN ACLs or upstream rules
 
 Command(s) to run:
 ipconfig /all
@@ -1211,10 +1211,10 @@ Common pitfall:
 Over-rotating on DHCP when it’s an upstream policy issue.","dhcp::troubleshooting dhcp::gateway msp::scenario difficulty::tier2"
 "You run ipconfig /all and see 'DHCP Enabled: Yes' but the client has a static IP configured elsewhere. What is the most practical interpretation?
 
-A. DHCP is broken
-B. The client may be using a static IP despite DHCP enabled status showing Yes on another adapter
-C. DNS issue
-D. Scope exhaustion","Correct Answer: B
+A. The client may be using a static IP despite DHCP enabled status showing Yes on another adapter
+B. DNS issue
+C. Scope exhaustion
+D. DHCP is broken","Correct Answer: A. The client may be using a static IP despite DHCP enabled status showing Yes on another adapter
 
 Command(s) to run:
 ipconfig /all
@@ -1235,10 +1235,10 @@ Common pitfall:
 Reading ipconfig /all without identifying the active adapter.","dhcp::troubleshooting dhcp::basics msp::scenario difficulty::tier2"
 "A user’s device works until they connect to a particular docking station, then they get a wrong IP range. Best hypothesis?
 
-A. Dock is infected
+A. DNS cache
 B. Dock port is patched to a different VLAN/SSID/port profile
-C. DNS cache
-D. Lease duration","Correct Answer: B
+C. Dock is infected
+D. Lease duration","Correct Answer: B. Dock port is patched to a different VLAN/SSID/port profile
 
 Command(s) to run:
 ipconfig /all (docked)
