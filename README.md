@@ -1,4 +1,4 @@
-# msp-networking
+# msp-networking Interview Preparation
 
 This repo reflects how I study and prepare for MSP troubleshooting and interviews.
 
