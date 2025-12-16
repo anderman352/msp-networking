@@ -1,0 +1,637 @@
+"User says: 'VPN shows Connected, but I can’t open any internal apps.' What is the BEST first step?
+
+A. Check routing and DNS with route print + ipconfig /all
+B. Disable Windows Firewall
+C. Flush DNS cache only
+D. Reinstall VPN client","Correct Answer: A. Check routing and DNS with route print + ipconfig /all
+
+Command(s) to run:
+ipconfig /all
+route print
+
+What it checks:
+DNS servers/suffix and whether internal routes exist
+
+Why it works:
+Most VPN failures are routing/DNS, not the client install
+
+Success indicates:
+Internal routes present and DNS points internal; proceed to reachability tests
+
+Failure indicates:
+No internal routes or DNS still public
+
+Common pitfall:
+Jumping to reinstall without checking evidence","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User can browse the internet, but internal names (intranet.company.local) do not resolve. What is MOST likely?
+
+A. Split tunnel is enabled
+B. DHCP lease expired
+C. DNS is not set to internal DNS over VPN
+D. Gateway is down","Correct Answer: C. DNS is not set to internal DNS over VPN
+
+Command(s) to run:
+ipconfig /all
+nslookup intranet.company.local
+
+What it checks:
+Which DNS server answers and whether internal suffix is present
+
+Why it works:
+Internal names require internal DNS; public DNS won’t know them
+
+Success indicates:
+nslookup shows internal DNS server and returns internal IP
+
+Failure indicates:
+nslookup times out or returns NXDOMAIN from public DNS
+
+Common pitfall:
+Testing ping before confirming name resolution source","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. Internal names resolve, but ping to the resolved internal IP fails. What does this suggest?
+
+A. User typed the name wrong
+B. DNS is working but routing/ACL is blocking traffic
+C. VPN is not connected
+D. Browser cache issue","Correct Answer: B. DNS is working but routing/ACL is blocking traffic
+
+Command(s) to run:
+nslookup <internal-name>
+ping <resolved-internal-ip>
+tracert <resolved-internal-ip>
+
+What it checks:
+Name resolution vs reachability and hop where traffic stops
+
+Why it works:
+DNS can succeed even if routing/firewall blocks connectivity
+
+Success indicates:
+tracert reaches internal network and ping succeeds after fix
+
+Failure indicates:
+tracert stops or times out before destination
+
+Common pitfall:
+Assuming DNS success means access is fine","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User reports: 'With VPN on, internet stops working, but internal apps work.' What is MOST likely?
+
+A. Full tunnel VPN with restricted internet access/policy
+B. Split tunnel misconfigured
+C. DNS cache issue
+D. Local NIC failure","Correct Answer: A. Full tunnel VPN with restricted internet access/policy
+
+Command(s) to run:
+route print
+ipconfig /all
+ping 8.8.8.8
+
+What it checks:
+Whether default route points to VPN and whether external reachability exists
+
+Why it works:
+Full tunnel sends internet traffic into VPN; policy may block it
+
+Success indicates:
+Default route via VPN and internal works; internet restored after policy/proxy fix
+
+Failure indicates:
+No external reachability while VPN is default route
+
+Common pitfall:
+Assuming it’s 'DNS' without checking routes","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User reports: 'With VPN on, internal apps fail, but internet works normally.' What is MOST likely?
+
+A. Split tunnel missing internal routes
+B. Full tunnel enabled
+C. Browser issue
+D. Antivirus update","Correct Answer: A. Split tunnel missing internal routes
+
+Command(s) to run:
+route print
+ping <internal-ip>
+
+What it checks:
+Presence of internal subnet routes via VPN
+
+Why it works:
+Split tunnel requires explicit routes to internal networks
+
+Success indicates:
+Routes present and internal IP reachable after fix
+
+Failure indicates:
+No internal routes; ping fails
+
+Common pitfall:
+Only checking DNS when the IP itself is unreachable","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User can reach internal IPs over VPN but cannot access internal websites by name. What is MOST likely?
+
+A. VPN disconnected
+B. DNS issue (internal DNS not in use)
+C. Wrong subnet mask
+D. Routing issue","Correct Answer: B. DNS issue (internal DNS not in use)
+
+Command(s) to run:
+ping <internal-ip>
+nslookup intranet.company.local
+ipconfig /all
+
+What it checks:
+Reachability vs name resolution and DNS source
+
+Why it works:
+If IP works but names fail, DNS is the separator
+
+Success indicates:
+nslookup uses internal DNS and resolves; browser works
+
+Failure indicates:
+nslookup fails or uses public DNS
+
+Common pitfall:
+Treating every problem as routing","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User reports: 'VPN connected but I only can access one internal app; others fail.' What is a likely cause?
+
+A. ACL/firewall allowing some subnets/ports only
+B. DNS server down
+C. Corrupt profile
+D. DHCP exhausted","Correct Answer: A. ACL/firewall allowing some subnets/ports only
+
+Command(s) to run:
+tracert <app1-ip>
+tracert <app2-ip>
+route print
+
+What it checks:
+Whether different destinations follow different paths or are blocked
+
+Why it works:
+Policies can allow limited access while blocking others
+
+Success indicates:
+Blocked path fixed or ACL updated
+
+Failure indicates:
+Tracert stops for failing apps
+
+Common pitfall:
+Assuming one app working means full access","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User’s DNS server remains set to 8.8.8.8 and internal names fail. What is the BEST next action?
+
+A. Disable IPv6
+B. Reimage
+C. Restart Print Spooler
+D. Confirm VPN is pushing DNS and reconnect; escalate if not","Correct Answer: D. Confirm VPN is pushing DNS and reconnect; escalate if not
+
+Command(s) to run:
+ipconfig /all
+Disconnect/reconnect VPN
+ipconfig /all
+
+What it checks:
+Whether the VPN client pushes DNS settings on connect
+
+Why it works:
+Many VPNs assign DNS on connect; if it doesn’t, internal resolution breaks
+
+Success indicates:
+DNS changes to internal server after reconnect
+
+Failure indicates:
+DNS stays public; needs VPN profile/policy fix
+
+Common pitfall:
+Only flushing DNS cache instead of fixing DNS source","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User’s VPN is full tunnel. They can’t reach a printer on their local home network while connected. Why?
+
+A. Local LAN traffic is routed into VPN (no local access)
+B. DHCP lease expired
+C. DNS issue
+D. Printer driver issue","Correct Answer: A. Local LAN traffic is routed into VPN (no local access)
+
+Command(s) to run:
+route print
+ping <printer-ip> (VPN on/off)
+
+What it checks:
+Whether local subnet routes are overridden by VPN default route
+
+Why it works:
+Full tunnel can block local LAN access by design
+
+Success indicates:
+Local LAN access returns when split/local routes enabled
+
+Failure indicates:
+Printer unreachable only when VPN is on
+
+Common pitfall:
+Troubleshooting printer drivers instead of routing","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected but internal access fails. route print shows no routes for internal subnets. What does this indicate?
+
+A. Route injection/profile issue (split tunnel)
+B. DHCP outage
+C. DNS cache issue
+D. User typed wrong password","Correct Answer: A. Route injection/profile issue (split tunnel)
+
+Command(s) to run:
+route print
+ping <internal-ip>
+
+What it checks:
+Whether internal subnet routes exist via VPN interface
+
+Why it works:
+If routes aren’t installed, traffic never enters tunnel
+
+Success indicates:
+Internal routes appear after profile fix; access restored
+
+Failure indicates:
+No routes; internal unreachable
+
+Common pitfall:
+Assuming 'Connected' means routing is installed","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN works from home but not from public Wi-Fi. What’s a realistic first hypothesis?
+
+A. Captive portal or restricted network blocking VPN
+B. Wrong VLAN at office
+C. DHCP exhaustion
+D. DNS suffix missing","Correct Answer: A. Captive portal or restricted network blocking VPN
+
+Command(s) to run:
+Confirm internet access in browser
+ping 8.8.8.8
+Try VPN again
+
+What it checks:
+Whether the network allows required VPN traffic
+
+Why it works:
+Public Wi-Fi can block VPN until portal accepted
+
+Success indicates:
+VPN connects after portal/network change
+
+Failure indicates:
+VPN consistently blocked on that Wi-Fi
+
+Common pitfall:
+Spending time on client config when network blocks VPN","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. Internal names resolve, but only some users can access a specific subnet. What should you do?
+
+A. Disable Windows Firewall
+B. Compare route print across users and escalate with evidence
+C. Flush DNS
+D. Reinstall VPN client","Correct Answer: B. Compare route print across users and escalate with evidence
+
+Command(s) to run:
+route print (affected)
+route print (working)
+Document user/group
+
+What it checks:
+Policy/route differences per user/group
+
+Why it works:
+VPN policies can be assigned by group
+
+Success indicates:
+Routes added and access restored
+
+Failure indicates:
+Subnet missing routes for some users
+
+Common pitfall:
+Escalating without comparison data","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User says: 'VPN connected, but my PC shows no internet.' Internal apps work. What should you check FIRST?
+
+A. Disable Bluetooth
+B. Reimage PC
+C. Full tunnel policy and external reachability
+D. Reset password","Correct Answer: C. Full tunnel policy and external reachability
+
+Command(s) to run:
+route print
+ping 8.8.8.8
+ipconfig /all
+
+What it checks:
+Whether default route is VPN and whether external access is allowed
+
+Why it works:
+Some full-tunnel profiles intentionally block internet
+
+Success indicates:
+Internet works if policy allows or split tunnel enabled
+
+Failure indicates:
+No external reachability by design/policy
+
+Common pitfall:
+Treating the tray icon as definitive","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User can access internal by FQDN but short names (server01) fail. What is MOST likely?
+
+A. DNS suffix/search list missing
+B. VPN disconnected
+C. Routing issue
+D. DHCP lease expired","Correct Answer: A. DNS suffix/search list missing
+
+Command(s) to run:
+ipconfig /all
+nslookup server01
+nslookup server01.company.local
+
+What it checks:
+Suffix search list behavior
+
+Why it works:
+Missing suffix breaks short-name resolution even if FQDN works
+
+Success indicates:
+Suffix corrected; short names resolve
+
+Failure indicates:
+Short names fail until suffix fixed
+
+Common pitfall:
+Assuming short-name failure is routing","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. Internet works, DNS resolves internal names, but an internal web app returns Access Denied only for this user. What is MOST likely?
+
+A. DHCP scope issue
+B. Application/identity authorization issue
+C. Routing issue
+D. DNS issue","Correct Answer: B. Application/identity authorization issue
+
+Command(s) to run:
+Confirm others can access
+Document exact error; escalate to app/identity team
+
+What it checks:
+Authorization vs connectivity
+
+Why it works:
+If reachability is fine but app denies, it’s usually permissions
+
+Success indicates:
+Access restored after permissions fix
+
+Failure indicates:
+Connectivity remains fine; access denied persists
+
+Common pitfall:
+Continuing network troubleshooting after confirming reachability","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User says: 'VPN connected and internal works, but speed is terrible.' What’s a good first check?
+
+A. Change password
+B. Flush DNS
+C. Measure latency/path to internal resource
+D. Disable DHCP","Correct Answer: C. Measure latency/path to internal resource
+
+Command(s) to run:
+ping <internal-ip> -n 10
+tracert <internal-ip>
+
+What it checks:
+Latency and hop count over VPN path
+
+Why it works:
+Long paths/hairpin routing cause slowness
+
+Success indicates:
+Latency improves after route/ISP fix
+
+Failure indicates:
+High latency persists
+
+Common pitfall:
+Assuming the server is slow without measuring","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User can resolve internal names, but ping to internal gateway works while internal servers fail. What’s likely?
+
+A. DNS issue
+B. Wrong password
+C. VPN disconnected
+D. ACL/routing beyond the gateway","Correct Answer: D. ACL/routing beyond the gateway
+
+Command(s) to run:
+ping <internal-gateway>
+tracert <internal-server-ip>
+
+What it checks:
+Where traffic stops beyond first hop
+
+Why it works:
+Gateway reachability doesn’t guarantee end-to-end routing
+
+Success indicates:
+Tracert reaches servers after policy fix
+
+Failure indicates:
+Stops after gateway
+
+Common pitfall:
+Stopping at first-hop success","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User loses VPN connection every few minutes. What is a reasonable FIRST check?
+
+A. Check packet loss/stability to VPN gateway
+B. Disable DHCP
+C. Edit hosts file
+D. Change DNS suffix","Correct Answer: A. Check packet loss/stability to VPN gateway
+
+Command(s) to run:
+ping <vpn-gateway> -n 20
+tracert <vpn-gateway>
+
+What it checks:
+Stability/packet loss on the path
+
+Why it works:
+Unstable connectivity drops tunnels regardless of config
+
+Success indicates:
+Low loss after network fix; VPN stable
+
+Failure indicates:
+High loss correlates with drops
+
+Common pitfall:
+Assuming credential/auth issue without checking stability","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User can ping internal IP but SMB (file share) fails. What should you do next?
+
+A. Gather evidence for port/policy block and escalate
+B. Reinstall Windows
+C. Disable UAC
+D. Flush DNS","Correct Answer: A. Gather evidence for port/policy block and escalate
+
+Command(s) to run:
+ping <server-ip>
+tracert <server-ip>
+Document that SMB/445 fails
+
+What it checks:
+Reachability vs service/policy restrictions
+
+Why it works:
+ICMP may work while SMB is blocked by ACL
+
+Success indicates:
+SMB works after policy update
+
+Failure indicates:
+Ping works but SMB fails
+
+Common pitfall:
+Concluding network is fine because ping works","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User can connect to VPN on Wi-Fi but not on wired at home. What should you compare first?
+
+A. Disable firewall
+B. Adapter IP/DNS/routes (Wi-Fi vs Ethernet)
+C. Reinstall VPN client
+D. Reset password","Correct Answer: B. Adapter IP/DNS/routes (Wi-Fi vs Ethernet)
+
+Command(s) to run:
+ipconfig /all (Wi-Fi)
+ipconfig /all (Ethernet)
+route print
+
+What it checks:
+Adapter-level differences and route behavior
+
+Why it works:
+Different adapters can have different DNS/MTU/firewall behavior
+
+Success indicates:
+VPN works after fixing wired network settings
+
+Failure indicates:
+VPN fails only on wired
+
+Common pitfall:
+Assuming the client is broken","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User says: 'Internal apps fail, but only when I’m on home Wi-Fi; mobile hotspot works.' Most likely?
+
+A. VPN account locked
+B. Company DNS down
+C. Windows corruption
+D. Home network issue (DNS/MTU/firewall)","Correct Answer: D. Home network issue (DNS/MTU/firewall)
+
+Command(s) to run:
+ping <vpn-gateway>
+tracert <vpn-gateway>
+Test hotspot vs Wi-Fi
+
+What it checks:
+Path differences between networks
+
+Why it works:
+Hotspot success points to local router/Wi-Fi restrictions
+
+Success indicates:
+VPN works on Wi-Fi after router config fix
+
+Failure indicates:
+VPN fails only on home Wi-Fi
+
+Common pitfall:
+Reinstalling VPN client when hotspot proves it works","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. route print shows default route via VPN. User says cloud apps (Teams/Outlook) behave poorly. What is MOST likely?
+
+A. Printer spooler
+B. Full tunnel policy impacting cloud traffic
+C. DNS A record issue
+D. DHCP lease time","Correct Answer: B. Full tunnel policy impacting cloud traffic
+
+Command(s) to run:
+route print
+ping 8.8.8.8
+
+What it checks:
+Whether the VPN is full tunnel (default route via VPN)
+
+Why it works:
+Full tunnel/filtering can degrade cloud app performance
+
+Success indicates:
+Cloud apps stabilize after split/full adjustment
+
+Failure indicates:
+Cloud apps fail when VPN default route enforced
+
+Common pitfall:
+Assuming it’s an app issue without checking tunneling mode","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"VPN connected. User has internal DNS and internal routes, but internal access still fails. What is the best next step?
+
+A. Flush DNS
+B. Test reachability to internal IP and use tracert to find where it stops
+C. Reinstall client
+D. Disable antivirus","Correct Answer: B. Test reachability to internal IP and use tracert to find where it stops
+
+Command(s) to run:
+ping <internal-ip>
+tracert <internal-ip>
+
+What it checks:
+Where traffic is blocked after config looks correct
+
+Why it works:
+If routes/DNS look right, confirm path and block point
+
+Success indicates:
+Tracert reaches destination after fix
+
+Failure indicates:
+Tracert stops at a hop or times out
+
+Common pitfall:
+Stopping at config checks without testing reachability","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User says: 'VPN connects, then prompts for credentials repeatedly.' What’s a plausible cause?
+
+A. DNS suffix issue
+B. MFA/conditional access or saved credentials mismatch
+C. Subnet mask wrong
+D. DHCP exhausted","Correct Answer: B. MFA/conditional access or saved credentials mismatch
+
+Command(s) to run:
+Confirm account works (web sign-in if available)
+Retry credentials and note MFA prompts
+
+What it checks:
+Auth vs networking separation
+
+Why it works:
+Repeated prompts often indicate auth/token/MFA issues
+
+Success indicates:
+Auth succeeds; VPN stable
+
+Failure indicates:
+Prompts continue; escalate to identity team with details
+
+Common pitfall:
+Assuming it’s routing when it’s auth","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
+"User can access internal sites by name but RDP to internal hosts fails. What’s likely?
+
+A. VPN disconnected
+B. DNS issue
+C. Wrong subnet mask
+D. Policy/port differences (web allowed, RDP blocked)","Correct Answer: D. Policy/port differences (web allowed, RDP blocked)
+
+Command(s) to run:
+ping <rdp-target-ip>
+tracert <rdp-target-ip>
+
+What it checks:
+Reachability and likely policy blocks by service
+
+Why it works:
+Different services may be restricted by policy
+
+Success indicates:
+RDP allowed after policy change
+
+Failure indicates:
+Reachable but service blocked
+
+Common pitfall:
+Treating all internal access as identical","vpn::troubleshooting vpn::split-tunnel vpn::full-tunnel msp::scenario difficulty::tier2"
